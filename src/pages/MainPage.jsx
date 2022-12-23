@@ -1,8 +1,12 @@
 import React from "react";
-import Roos from "../components/main/Roos";
+import RoosList from "../components/main/RoosList";
 
-const MainPage = () => {
-  return <Roos />;
+const PostPage = () => {
+  return (
+    <>
+      <RoosList />
+    </>
+  );
 };
 
-export default MainPage;
+export default PostPage;
