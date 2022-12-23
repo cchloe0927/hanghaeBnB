@@ -2,7 +2,7 @@
 name: "issue--\U0001F48Erefactor.md"
 about: refactor
 title: ''
-labels: documentation
+labels: ''
 assignees: ''
 
 ---

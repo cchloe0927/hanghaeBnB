@@ -2,7 +2,7 @@
 name: issue---✅-feature-md.md
 about: 이슈 템플릿
 title: ''
-labels: documentation
+labels: feature
 assignees: ''
 
 ---
