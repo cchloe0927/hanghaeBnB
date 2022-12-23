@@ -1,5 +1,5 @@
 ---
-name: Bug 템플릿
+name: "issue--\U0001F41Ebug.md"
 about: Bug 템플릿
 title: ''
 labels: ''
