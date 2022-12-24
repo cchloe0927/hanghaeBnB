@@ -6,11 +6,27 @@
 }
 
 /* header */
-.header {
+.headerContainer {
+  /* 신규 헤더 컨테이너 부분 */
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 18px;
+  width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid var(--color-border-bg-dark);
+}
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  min-width: 870px;
+  margin: 0 auto;
+}
+
+.headerButtonGroup {
+  display: flex;
+  padding: 18px;
   font-size: 15px;
 }
 
@@ -18,8 +34,8 @@
   color: var(--color-main);
 }
 .logo_btn img {
-  width: 80px;
-  height: 30px;
+  margin-left: 30%;
+  height: 40px;
 }
 
 .right_btn {

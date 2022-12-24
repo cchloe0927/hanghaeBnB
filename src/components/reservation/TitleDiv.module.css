@@ -1,0 +1,27 @@
+.summaryGroup {
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+}
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.button {
+  background-color: white;
+  font: inherit;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-border);
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: underline;
+}
+.delete {
+  background-color: red;
+}
+.button:hover {
+  background-color: var(--color-border-bg-light);
+}

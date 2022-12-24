@@ -4,6 +4,8 @@ import RegisterPage from "../pages/RegisterPage";
 import Layout from "./layout/Layout";
 import MainPage from "../pages/MainPage";
 import PostRoomPage from "../pages/PostRoomPage";
+import ReservationPage from "../pages/ReservationPage";
+import MyPage from "../pages/MyPage";
 
 const Router = () => {
   return (
@@ -20,6 +22,8 @@ const Router = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/post" element={<PostRoomPage />} />
+          <Route path="/reservation/:id" element={<ReservationPage />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
