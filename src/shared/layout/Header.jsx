@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BtnModal from "./BtnModal";
-import logo from "../../img/logo.png";
+import logo from "../../img/logo.svg";
 import { FaUserAlt, FaBars } from "react-icons/fa";
 import classes from "./Layout.module.css";
 
