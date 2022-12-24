@@ -6,11 +6,16 @@
 }
 
 /* header */
-.header {
+.headerContainer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 18px;
   border-bottom: 1px solid var(--color-border-bg-dark);
+}
+
+.headerButtonGroup {
+  display: flex;
+  padding: 18px;
   font-size: 15px;
 }
 
@@ -18,8 +23,8 @@
   color: var(--color-main);
 }
 .logo_btn img {
-  width: 80px;
-  height: 30px;
+  margin-left: 18px;
+  height: 60px;
 }
 
 .right_btn {
