@@ -1,10 +1,10 @@
 import React from "react";
-import RoosList from "../components/main/RoosList";
+import RoomsList from "../components/main/RoomsList";
 
 const PostPage = () => {
   return (
     <>
-      <RoosList />
+      <RoomsList />
     </>
   );
 };

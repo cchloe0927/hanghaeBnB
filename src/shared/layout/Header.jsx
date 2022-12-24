@@ -12,7 +12,7 @@ const Header = () => {
     setBtnModal(true);
   };
 
-  const onModal = () => {
+  const onCloseBtnHandler = () => {
     setBtnModal(false);
   };
 
@@ -24,7 +24,7 @@ const Header = () => {
       <div className={classes.right_btn}>
         <p>당신의 공간을 항해비앤비하세요</p>
         <div className={classes.icons}>
-          {btnmodal ? <BtnModal onModal={onModal} /> : null}
+          {btnmodal ? <BtnModal onCloseBtnHandler={onCloseBtnHandler} /> : null}
           <button
             className={classes.icons_login}
             onClick={onClickBtnModalHandler}

@@ -78,3 +78,9 @@
   width: 100%;
   padding: 0.8rem;
 }
+
+@media screen and (max-width: 700px) {
+  .wrap .container {
+    width: 400px;
+  }
+}

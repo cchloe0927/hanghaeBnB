@@ -1,0 +1,10 @@
+.wrap {
+  height: 80vh;
+}
+
+.header_category {
+  border: 1px solid var(--color-border-bg-light);
+  color: #717171;
+  text-align: center;
+  padding: 1.5rem;
+}
