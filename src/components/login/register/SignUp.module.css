@@ -1,0 +1,80 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--color-border-bg-light);
+}
+
+.container {
+  width: 600px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-bg-dark);
+}
+.header button {
+  position: fixed;
+  margin-left: 35px;
+  background: none;
+  border: none;
+}
+.header h3 {
+  margin: auto;
+  padding: 0.8rem;
+}
+
+.box {
+  padding: 2.2rem;
+}
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  height: 50px;
+}
+
+.input_area {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+}
+.input_area input {
+  width: 100%;
+  padding: 24px 10px 8px;
+  border: 1px solid var(--color-border-bg-dark);
+  border-radius: 8px;
+  font-size: 14px;
+  color: black;
+  outline: none;
+}
+.input_area .label {
+  padding: 0.5rem;
+  position: absolute;
+  margin-left: 5px;
+  font-size: 12px;
+  color: var(--color-etc);
+}
+.input_area .warning {
+  padding: 0.5rem;
+  position: absolute;
+  margin-left: 5px;
+  font-size: 12px;
+  color: var(--color-main) !important;
+}
+.email {
+  display: flex;
+  gap: 30px;
+}
+.email_box {
+  width: 75%;
+}
+.email_check {
+  width: 25%;
+}
+
+.login_btn {
+  width: 100%;
+  padding: 0.8rem;
+}

@@ -11,10 +11,10 @@ const AlertModal = () => {
   const navigate = useNavigate();
   const [loginValue, setLoginValue] = useState({
     email: "",
-    pw: "",
+    password: "",
 
     isValidEmail: true,
-    isValidPW: true,
+    isValidPassword: true,
   });
 
   //카카오 인가 코드 요청
@@ -22,16 +22,20 @@ const AlertModal = () => {
   //     window.location.href = KAKAO_AUTH_URL;
   //   };
 
+  const onClickCloseBtnHandler = () => {
+    navigate("/");
+  };
+
   const onChangeInputHandler = (event) => {
     const { name, value } = event.target;
     if (name === "email" && value) {
       setLoginValue({ ...loginValue, isValidEmail: true, [name]: value });
-    } else if (name === "pw" && value) {
-      setLoginValue({ ...loginValue, isValidPW: true, [name]: value });
+    } else if (name === "password" && value) {
+      setLoginValue({ ...loginValue, isValidPassword: true, [name]: value });
     } else if (name === "email" && !value) {
       setLoginValue({ ...loginValue, isValidEmail: false, [name]: value });
     } else {
-      setLoginValue({ ...loginValue, isValidPW: false, [name]: value });
+      setLoginValue({ ...loginValue, isValidPassword: false, [name]: value });
     }
   };
   //console.log("onChange :", loginValue);
@@ -40,12 +44,12 @@ const AlertModal = () => {
     event.preventDefault();
     if (loginValue.email === "") {
       setLoginValue({ ...loginValue, isValidEmail: false });
-    } else if (loginValue.pw === "") {
-      setLoginValue({ ...loginValue, isValidPW: false });
+    } else if (loginValue.password === "") {
+      setLoginValue({ ...loginValue, isValidPassword: false });
     } else {
       const newLoginValue = {
         email: loginValue.email,
-        password: loginValue.pw,
+        password: loginValue.password,
       };
       //   sign_in(newLoginValue).then((res) => {
       //     //console.log("res", res);
@@ -64,7 +68,7 @@ const AlertModal = () => {
       <Card>
         <section className={classes.container}>
           <header className={classes.header}>
-            <button>
+            <button onClick={onClickCloseBtnHandler}>
               <FaTimes size="20px" />
             </button>
             <h3>로그인</h3>
@@ -83,7 +87,7 @@ const AlertModal = () => {
                   loginValue.isValidEmail ? classes.label : classes.warning
                 }`}
               >
-                Email
+                이메일
               </label>
               <input
                 id="email"
@@ -96,18 +100,18 @@ const AlertModal = () => {
 
             <div className={classes.input_area}>
               <label
-                htmlFor="pw"
+                htmlFor="password"
                 className={`${
-                  loginValue.isValidPW ? classes.label : classes.warning
+                  loginValue.isValidPassword ? classes.label : classes.warning
                 }`}
               >
-                Password
+                비밀번호
               </label>
               <input
-                id="pw"
-                name="pw"
+                id="password"
+                name="password"
                 type="password"
-                value={loginValue.pw}
+                value={loginValue.password}
                 onChange={onChangeInputHandler}
               />
             </div>
