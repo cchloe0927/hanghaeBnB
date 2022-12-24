@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 import Layout from "./layout/Layout";
 import MainPage from "../pages/MainPage";
 import PostRoomPage from "../pages/PostRoomPage";
@@ -12,12 +12,12 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
           {/* <Route
             path="/api/users/kakao/callback"
             element={<Oauth2RedirectHandeler />}
           /> */}
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Route>
         <Route element={<Layout />}>
           <Route path="/" element={<MainPage />} />

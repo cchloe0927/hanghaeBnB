@@ -12,7 +12,7 @@ const Header = () => {
     setBtnModal(true);
   };
 
-  const onModal = () => {
+  const onCloseBtnHandler = () => {
     setBtnModal(false);
   };
 
@@ -33,7 +33,6 @@ const Header = () => {
               >
                 <FaBars size="17px" color="#524f4f" />
               </button>
-
               <Link to={"/mypage"}>
                 <button className={classes.icons_my_btn}>
                   <FaUserAlt size="18px" color="#524f4f" />
