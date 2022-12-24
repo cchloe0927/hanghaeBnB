@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
 import classes from "./PostRoom.module.css";
 //redux
+import { useDispatch } from "react-redux";
+import { __postRoom } from "../../redux/modules/postRoomSlice";
 
 const PostRoom = () => {
+  const dispatch = useDispatch();
+  const fileInput = useRef();
   let location = [
     "",
     "서울",
@@ -52,6 +56,19 @@ const PostRoom = () => {
       },
       MultipartFile: formData,
     };
+    // dispatch(__postRoom(newPostData))
+    //등록 후 빈값
+    setRoomsInfoData({
+      location: "",
+      title: "",
+      contents: "",
+      headDefault: "",
+      headMax: "",
+      price: "",
+      extraPrice: "",
+    });
+    setTagList([]);
+    fileInput.current.value = "";
     console.log("newPostData 확인 :", newPostData);
   };
 
@@ -165,6 +182,7 @@ const PostRoom = () => {
 
           <label>이미지 업로드</label>
           <input
+            ref={fileInput}
             type="file"
             name="file"
             className={classes.img_upload}
