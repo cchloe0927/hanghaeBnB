@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { FiShare } from "react-icons/fi";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 
 import classes from "./TitleDiv.module.css";
-import Button from "../elements/Button";
 
 const TitleDiv = () => {
   return (
@@ -16,9 +18,17 @@ const TitleDiv = () => {
           <span>위치</span>
         </div>
         <div className={classes.buttonGroup}>
-          <Button>공유하기</Button>
-          <Button>♥︎</Button>
-          <Button>삭제</Button>
+          <button className={classes.button}>
+            <FiShare /> 공유하기
+          </button>
+          <button className={classes.button}>
+            <AiOutlineHeart />
+            좋아요
+          </button>
+          <button className={classes.button}>
+            <AiOutlineDelete />
+            삭제
+          </button>
         </div>
       </div>
     </div>
