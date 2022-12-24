@@ -5,9 +5,11 @@ const GlovalStyle = createGlobalStyle`
 :root{
   --color-main: #FF385C;
   --color-button: #FF385C;
-  --color-button-hober: #BD1E59;
+  --color-button-hover: #BD1E59;
   --color-border: #222222;
-  --color-border-bg: lightgray;
+  --color-border-bg-dark: lightgray;
+  --color-border-bg-light: #f7f7f7;
+  --color-etc: #888
 }
 
 @font-face {

@@ -1,20 +1,61 @@
+/* layout */
 .layout {
   max-width: 1200px;
   min-width: 800px;
   margin: auto;
 }
 
+/* header */
 .header {
   display: flex;
   justify-content: space-between;
   padding: 18px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-bg-dark);
+  font-size: 15px;
 }
 
-.headerLink {
+.logo_btn {
   color: var(--color-main);
 }
+.logo_btn img {
+  width: 80px;
+  height: 30px;
+}
 
+.right_btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.icons {
+  padding: 1px 8px;
+  display: flex;
+  justify-content: space-around;
+  gap: 2px;
+  border: 1px solid var(--color-border-bg-dark);
+  width: 100px;
+  border-radius: 20px;
+}
+.icons_login {
+  background: none;
+  width: 35px;
+  height: 35px;
+  border: none;
+}
+.icons_login:hover {
+  box-shadow: 0 4px 4px -4px black;
+}
+.icons_my_btn {
+  background: none;
+  width: 35px;
+  height: 35px;
+  border: none;
+}
+.icons_my_btn:hover {
+  box-shadow: 0 4px 4px -4px black;
+}
+
+/* footer */
 .footer {
   width: 100%;
   height: 50px;
