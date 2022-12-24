@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 
 import classes from "./Reservation.module.css";
+import ImgageDiv from "./ImgageDiv.jsx";
+import TitleDiv from "./TitleDiv";
 
 const Reservation = () => {
   return (
     <div className={classes.container}>
-      <div className={classes.buttonGroup}>
-        <button>♥︎</button>
-        <button>삭제</button>
-      </div>
-      <div className={classes.imageGroup}>
-        <div style={{ width: "450px", height: "350px" }}>img1</div>
-        <div style={{ width: "450px", height: "350px" }}>img2</div>
-      </div>
+      <TitleDiv />
+      <ImgageDiv />
       <div className={classes.contentsDiv}>
         <div className={classes.TextDiv}>
           <div>title</div>
@@ -25,7 +21,7 @@ const Reservation = () => {
             <div>tag3</div>
           </div>
         </div>
-        <div className={classes.reservationDiv}>
+        <div className={classes.reservationContent}>
           <div>price</div>
           <button>예약하기</button>
           <div>DetailPrice</div>
