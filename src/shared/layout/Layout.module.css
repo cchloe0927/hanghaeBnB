@@ -7,7 +7,6 @@
 
 /* header */
 .headerContainer {
-  /* 신규 헤더 컨테이너 부분 */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,13 +22,11 @@
   min-width: 870px;
   margin: 0 auto;
 }
-
 .headerButtonGroup {
   display: flex;
   padding: 18px;
   font-size: 15px;
 }
-
 .logo_btn {
   color: var(--color-main);
 }
@@ -37,7 +34,6 @@
   margin-left: 30%;
   height: 40px;
 }
-
 .right_btn {
   display: flex;
   align-items: center;
