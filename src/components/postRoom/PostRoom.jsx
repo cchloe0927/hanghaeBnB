@@ -95,7 +95,8 @@ const PostRoom = () => {
 
   const formData = new FormData();
   const onChangeImgHandler = async (event) => {
-    formData.append("file", event.target.files[0]);
+    formData.append("file", event.target.files);
+    //console.log(event.target.files); //한번에 여러개 파일 선택 후 넣어야함
     for (let value of formData.values()) {
       console.log("formData onchange value:", value);
     }
@@ -185,6 +186,7 @@ const PostRoom = () => {
             ref={fileInput}
             type="file"
             name="file"
+            multiple
             className={classes.img_upload}
             onChange={onChangeImgHandler}
           ></input>
