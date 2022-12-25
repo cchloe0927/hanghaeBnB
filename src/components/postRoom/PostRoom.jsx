@@ -4,7 +4,7 @@ import Button from "../elements/Button";
 import classes from "./PostRoom.module.css";
 //redux
 import { useDispatch } from "react-redux";
-import { __postRoom } from "../../redux/modules/postRoomSlice";
+import { __postRoom } from "../../redux/modules/roomsSlice";
 
 const PostRoom = () => {
   const dispatch = useDispatch();

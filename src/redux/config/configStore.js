@@ -1,9 +1,9 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 // import login from "../modules/loginSlice";
-import postRoom from "../modules/postRoomSlice";
+import rooms from "../modules/roomsSlice";
 
 const store = configureStore({
-  reducer: { postRoom },
+  reducer: { rooms },
   middleware: getDefaultMiddleware({
     serializableCheck: false,
   }),
