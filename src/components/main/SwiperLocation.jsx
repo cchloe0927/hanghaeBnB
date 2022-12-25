@@ -7,6 +7,31 @@ import "swiper/css/navigation";
 SwiperCore.use([Navigation]);
 
 const SwiperLodation = () => {
+  const locationName = [
+    "전체",
+    "서울",
+    "경기",
+    "인천",
+    "강원",
+    "충북",
+    "충남",
+    "세종",
+    "대전",
+    "전북",
+    "걍븍",
+    "대구",
+    "울산",
+    "경남",
+    "부산",
+    "광주",
+    "전남",
+    "제주",
+  ];
+
+  const onClickLocationNameHandler = (locaionItem, index) => {
+    console.log(locaionItem);
+  };
+
   return (
     <Swiper
       spaceBetween={5}
@@ -20,24 +45,14 @@ const SwiperLodation = () => {
       }}
     >
       <div>
-        <SwiperSlide>전체</SwiperSlide>
-        <SwiperSlide>서울</SwiperSlide>
-        <SwiperSlide>경기</SwiperSlide>
-        <SwiperSlide>인천</SwiperSlide>
-        <SwiperSlide>강원</SwiperSlide>
-        <SwiperSlide>충북</SwiperSlide>
-        <SwiperSlide>충남</SwiperSlide>
-        <SwiperSlide>세종</SwiperSlide>
-        <SwiperSlide>대전</SwiperSlide>
-        <SwiperSlide>전북</SwiperSlide>
-        <SwiperSlide>경북</SwiperSlide>
-        <SwiperSlide>대구</SwiperSlide>
-        <SwiperSlide>울산</SwiperSlide>
-        <SwiperSlide>경남</SwiperSlide>
-        <SwiperSlide>부산</SwiperSlide>
-        <SwiperSlide>광주</SwiperSlide>
-        <SwiperSlide>전남</SwiperSlide>
-        <SwiperSlide>제주</SwiperSlide>
+        {locationName.map((itme, index) => (
+          <SwiperSlide
+            key={index}
+            onClick={() => onClickLocationNameHandler(itme, index)}
+          >
+            {itme}
+          </SwiperSlide>
+        ))}
       </div>
     </Swiper>
   );
