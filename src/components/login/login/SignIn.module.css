@@ -35,12 +35,15 @@
   height: 50px;
 }
 .signup_txt {
-  display: flex;
-  justify-content: end;
+  /* display: flex;
+  justify-content: end; */
+  width: 150px;
+  height: 20px;
+  float: right;
+  margin: 10px 0;
   font-size: 14px;
   font-weight: 700;
   color: var(--color-border);
-  /* text-decoration: none; */
 }
 
 .input_area {

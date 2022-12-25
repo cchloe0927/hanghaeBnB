@@ -1,10 +1,42 @@
-.wrap {
-  height: 80vh;
+/* 스와이퍼 */
+.header_category {
+  position: sticky;
+  top: 60px;
+  border: 1px solid var(--color-border-bg-light);
+  background-color: white;
+  color: #717171;
+  font-size: 14px;
+  text-align: center;
+  padding: 1.1rem;
 }
 
-.header_category {
-  border: 1px solid var(--color-border-bg-light);
-  color: #717171;
-  text-align: center;
-  padding: 1.5rem;
+.rooms_container {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+@media screen and (max-width: 1400px) {
+  div .rooms_container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  div .rooms_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  div .rooms_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  div .rooms_container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
