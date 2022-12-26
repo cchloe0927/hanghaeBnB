@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { sign_up } from "../../../core/LoginAPI";
+import { sign_up, duplicate_check } from "../../../core/LoginAPI";
 import Button from "../../elements/Button";
 import Card from "../../elements/Card";
 import { FaTimes } from "react-icons/fa";
@@ -40,6 +40,11 @@ const SignUp = () => {
   //데이터 전송
   const onSubminLoginValueHandler = (event) => {
     event.preventDefault();
+    const newLoginValue = {
+      email: email,
+      password: password,
+      nickname: nickname,
+    };
     if (
       email !== "" &&
       password !== "" &&
@@ -47,8 +52,11 @@ const SignUp = () => {
       nickname !== "" &&
       duplicateCheck === true
     ) {
-      alert("회원가입 완료!");
-      navigate("/login");
+      sign_up(newLoginValue).then((res) => {
+        setDuplicateCheck(false);
+        // navigate("/login");
+        alert("회원가입 완료!");
+      });
     }
   };
 
@@ -58,13 +66,13 @@ const SignUp = () => {
       email: email,
     };
     if (email !== "") {
-      //   duplicate_check(emailDuplicateCheck).then((res) => {
-      //     alert(res.data.msg);
-      //   });
+      duplicate_check(emailDuplicateCheck).then((res) => {
+        alert(res.data.msg);
+      });
       setDuplicateCheck(true);
     }
   };
-  console.log("duplicateCheck :", duplicateCheck);
+  //console.log("duplicateCheck :", duplicateCheck);
 
   //이메일
   const onChangEmailHandler = (event) => {
