@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 SwiperCore.use([Navigation]);
 
 const SwiperLodation = () => {
+  //상수함수 -> 컴포넌트(컨트롤에 가까운)를 하나 생성해서 그 안에서 관리를 해주는 것이 좋다!
   const locationName = [
     "전체",
     "서울",

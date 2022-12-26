@@ -12,6 +12,7 @@
 
 .rooms_container {
   padding: 25px;
+  margin-bottom: 50px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
