@@ -8,6 +8,10 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const Card = ({ title, checkIn, headCount, totalPrice }) => {
   const navigate = useNavigate();
+
+  const cancleButtonHandler = () => {
+    navigate("/");
+  };
   return (
     <div className={classes.container}>
       <div className={classes.contentsDiv}>
@@ -33,7 +37,12 @@ const Card = ({ title, checkIn, headCount, totalPrice }) => {
           </div>
         </div>
         <div className={classes.buttonDiv}>
-          <Button className={classes.cancleButton}>예약 취소</Button>
+          <Button
+            className={classes.cancleButton}
+            onClick={cancleButtonHandler}
+          >
+            예약 취소
+          </Button>
         </div>
       </div>
     </div>
