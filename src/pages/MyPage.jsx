@@ -1,7 +1,13 @@
 import React from "react";
 
+import MyList from "../components/my/MyList";
+
 const MyPage = () => {
-  return <div>MyPage</div>;
+  return (
+    <div>
+      <MyList />
+    </div>
+  );
 };
 
 export default MyPage;
