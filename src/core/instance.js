@@ -10,6 +10,13 @@ export const instance = axios.create({
   },
 });
 
+export const fileInstance = axios.create({
+  baseURL: BACK_API,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
+
 //interceptors : axios에서 지원하는 기능. axios에서 요청을 보내는 것을 가로채서 추가하기
 // instance.interceptors.request.use((config) => {
 //   if (config.headers === undefined) return;

@@ -5,6 +5,9 @@ import classes from "./PostRoom.module.css";
 //redux
 import { useDispatch } from "react-redux";
 import { __postRoom } from "../../redux/modules/roomsSlice";
+//axios
+import axios from "axios";
+export const BACK_API = process.env.REACT_APP_BACKAPI;
 
 const PostRoom = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,9 @@ const PostRoom = () => {
     "전남",
     "제주",
   ];
+
+  //상태값 관리
+  const [imgFiles, setImgFiles] = useState([]);
   const [tagItem, setTagItem] = useState("");
   const [tagList, setTagList] = useState([]);
   const [roomsInfoData, setRoomsInfoData] = useState({
@@ -41,23 +47,44 @@ const PostRoom = () => {
     extraPrice: "",
   });
 
-  const onClickDataHandler = (e) => {
-    // e.preventDefault();
+  //함수 핸들러
+  const onClickDataHandler = async () => {
+    let formData = new FormData();
+    console.log("imgFile 상태값:", imgFiles);
+
+    //formData append
+    formData.append("MultipartFile", imgFiles);
+
     const newPostData = {
-      room: {
-        location: roomsInfoData.location,
-        title: roomsInfoData.title,
-        contents: roomsInfoData.contents,
-        headDefault: parseInt(roomsInfoData.headDefault),
-        headMax: parseInt(roomsInfoData.headMax),
-        price: parseInt(roomsInfoData.price),
-        extraPrice: parseInt(roomsInfoData.price),
-        tags: tagList,
-      },
-      MultipartFile: formData,
+      location: roomsInfoData.location,
+      title: roomsInfoData.title,
+      contents: roomsInfoData.contents,
+      headDefault: parseInt(roomsInfoData.headDefault),
+      headMax: parseInt(roomsInfoData.headMax),
+      price: parseInt(roomsInfoData.price),
+      extraPrice: parseInt(roomsInfoData.price),
+      tags: tagList, //배열 형식
     };
-    dispatch(__postRoom(newPostData));
-    //등록 후 빈값
+
+    formData.append(
+      "room",
+      new Blob([JSON.stringify(newPostData)], { type: "application/json" })
+    );
+
+    await axios({
+      url: `${BACK_API}/room`,
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    });
+
+    //리덕스 미들웨어 사용방법 TEST
+    //dispatch(__postRoom(formData));
+
+    //빈값 처리
     setRoomsInfoData({
       location: "",
       title: "",
@@ -93,13 +120,8 @@ const PostRoom = () => {
     setTagItem("");
   };
 
-  const formData = new FormData();
   const onChangeImgHandler = async (event) => {
-    formData.append("file", event.target.files);
-    console.log("event.target.files", event.target.files); //한번에 여러개 파일 선택 후 넣어야함
-    for (let value of formData.values()) {
-      console.log("formData onchange value:", value);
-    }
+    setImgFiles(event.target.files);
   };
 
   return (
@@ -211,7 +233,9 @@ const PostRoom = () => {
             />
           </div>
 
-          <Button onClick={onClickDataHandler}>등록</Button>
+          <Button type="button" onClick={onClickDataHandler}>
+            등록
+          </Button>
         </div>
       </Card>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { sign_in } from "../../../core/LoginAPI";
 import Card from "../../elements/Card";
 import Button from "../../elements/Button";
 import kakao from "../../../img/icon_kakao.png";
@@ -51,14 +52,13 @@ const AlertModal = () => {
         email: loginValue.email,
         password: loginValue.password,
       };
-      //   sign_in(newLoginValue).then((res) => {
-      //     //console.log("res", res);
-      //     alert(res.data.msg);
-      //     localStorage.setItem("id", res.headers.authorization);
-      //     localStorage.setItem("nickname", res.data.data.nickname);
-      //     localStorage.setItem("generation", res.data.data.generation);
-      //     navigate("/");
-      //   });
+      sign_in(newLoginValue).then((res) => {
+        //console.log("res", res);
+        alert(res.data.msg);
+        localStorage.setItem("id", res.headers.authorization);
+        //localStorage.setItem("nickname", res.data.data.nickname);
+        navigate("/");
+      });
     }
   };
   //console.log("onSubmit :", loginValue);
