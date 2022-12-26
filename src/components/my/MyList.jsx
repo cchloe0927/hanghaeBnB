@@ -5,9 +5,10 @@ import classes from "./MyList.module.css";
 
 import Button from "../elements/Button";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import Card from "./Card";
+import MyReavervationCard from "./MyReavervationCard";
 
 const MyList = () => {
+  let num = 0;
   const navigate = useNavigate();
   const sampleDate = JSON.stringify(new Date()).split("T")[0].substr(1);
   const sampleList = [
@@ -41,14 +42,17 @@ const MyList = () => {
       <div className={classes.titleDiv}>
         <h1>예약내역</h1>
       </div>
-      {sampleList.map(({ title, checkIn, headCount, totalPrice }) => (
-        <Card
-          title={title}
-          checkIn={checkIn}
-          headCount={headCount}
-          totalPrice={totalPrice}
-        />
-      ))}
+      <div className={classes.cardListDiv}>
+        {sampleList.map(({ title, checkIn, headCount, totalPrice }) => (
+          <MyReavervationCard
+            key={num++}
+            title={title}
+            checkIn={checkIn}
+            headCount={headCount}
+            totalPrice={totalPrice}
+          />
+        ))}
+      </div>
     </div>
   );
 };
