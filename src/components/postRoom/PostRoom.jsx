@@ -50,26 +50,39 @@ const PostRoom = () => {
   //함수 핸들러
   const onClickDataHandler = async () => {
     let formData = new FormData();
-    console.log("imgFile 상태값:", imgFiles);
+    //console.log("imgFile 상태값:", imgFiles);
 
     //formData append
-    formData.append("MultipartFile", imgFiles);
+    for (const key in imgFiles) {
+      formData.append("MultipartFile", imgFiles[key]);
+    }
 
-    const newPostData = {
-      location: roomsInfoData.location,
-      title: roomsInfoData.title,
-      contents: roomsInfoData.contents,
-      headDefault: parseInt(roomsInfoData.headDefault),
-      headMax: parseInt(roomsInfoData.headMax),
-      price: parseInt(roomsInfoData.price),
-      extraPrice: parseInt(roomsInfoData.price),
-      tags: tagList, //배열 형식
-    };
+    formData.append("location", roomsInfoData.location);
+    formData.append("title", roomsInfoData.title);
+    formData.append("contents", roomsInfoData.contents);
+    formData.append("headDefault", roomsInfoData.headDefault);
+    formData.append("headMax", roomsInfoData.headMax);
+    formData.append("price", roomsInfoData.price);
+    formData.append("extraPrice", roomsInfoData.extraPrice);
+    formData.append("tags", tagList);
 
-    formData.append(
-      "room",
-      new Blob([JSON.stringify(newPostData)], { type: "application/json" })
-    );
+    // formData append
+    // formData.append("MultipartFile", imgFiles);
+    // const newPostData = {
+    //   location: roomsInfoData.location,
+    //   title: roomsInfoData.title,
+    //   contents: roomsInfoData.contents,
+    //   headDefault: parseInt(roomsInfoData.headDefault),
+    //   headMax: parseInt(roomsInfoData.headMax),
+    //   price: parseInt(roomsInfoData.price),
+    //   extraPrice: parseInt(roomsInfoData.extraPrice),
+    //   tags: tagList, //배열 형식
+    // };
+
+    // formData.append(
+    //   "room",
+    //   new Blob([JSON.stringify(newPostData)], { type: "application/json" })
+    // );
 
     await axios({
       url: `${BACK_API}/room`,
@@ -96,7 +109,7 @@ const PostRoom = () => {
     });
     setTagList([]);
     fileInput.current.value = "";
-    console.log("newPostData 확인 :", newPostData);
+    // console.log("newPostData 확인 :", newPostData);
   };
 
   const onChangeInputValueHandler = (event) => {
@@ -123,6 +136,7 @@ const PostRoom = () => {
   const onChangeImgHandler = async (event) => {
     setImgFiles(event.target.files);
   };
+  console.log(imgFiles);
 
   return (
     <div className={classes.wrap}>
