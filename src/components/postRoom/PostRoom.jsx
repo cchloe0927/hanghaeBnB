@@ -45,9 +45,9 @@ const PostRoom = () => {
     // e.preventDefault();
     const newPostData = {
       room: {
+        location: roomsInfoData.location,
         title: roomsInfoData.title,
         contents: roomsInfoData.contents,
-        location: roomsInfoData.location,
         headDefault: parseInt(roomsInfoData.headDefault),
         headMax: parseInt(roomsInfoData.headMax),
         price: parseInt(roomsInfoData.price),
@@ -56,7 +56,7 @@ const PostRoom = () => {
       },
       MultipartFile: formData,
     };
-    // dispatch(__postRoom(newPostData))
+    dispatch(__postRoom(newPostData));
     //등록 후 빈값
     setRoomsInfoData({
       location: "",
@@ -96,11 +96,10 @@ const PostRoom = () => {
   const formData = new FormData();
   const onChangeImgHandler = async (event) => {
     formData.append("file", event.target.files);
-    //console.log(event.target.files); //한번에 여러개 파일 선택 후 넣어야함
+    console.log("event.target.files", event.target.files); //한번에 여러개 파일 선택 후 넣어야함
     for (let value of formData.values()) {
       console.log("formData onchange value:", value);
     }
-    // const data = await temp.post(``, formData)
   };
 
   return (
