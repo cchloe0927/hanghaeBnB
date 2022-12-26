@@ -22,11 +22,11 @@ const Header = () => {
     <div>
       <div
         className={
-          pathName === "reservation"
-            ? classes.reservationHeader
-            : pathName === "mypage"
-            ? classes.myPageHeader
-            : classes.headerContainer
+          classes.headerContainer
+          // pathName === "reservation"
+          //   ? classes.reservationHeader
+          //   : pathName === "mypage"
+          //   ? classes.myPageHeader
         }
       >
         <Link to={"/"} className={classes.logo_btn}>
@@ -54,7 +54,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className={classes.headerBottomLine} />
+      {/* <div className={classes.headerBottomLine} /> */}
     </div>
   );
 };
