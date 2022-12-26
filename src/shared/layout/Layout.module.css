@@ -6,9 +6,13 @@
 }
 
 /* header */
+.headerDiv {
+  display: flex;
+  flex-direction: column;
+}
 .headerContainer {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  /* top: 0; */
   height: 60px;
   z-index: 10;
   display: flex;
@@ -18,7 +22,36 @@
   width: 100%;
   margin: 0 auto;
   background: white;
-  border-bottom: 1px solid var(--color-border-bg-dark);
+}
+.reservationHeader {
+  height: 60px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  width: 60%;
+  min-width: 870px;
+  margin: 0 auto;
+  background: white;
+}
+.myPageHeader {
+  height: 60px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  width: 70%;
+  min-width: 870px;
+  margin: 0 auto;
+  background: white;
+}
+.headerBottomLine {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: var(--color-border-bg-dark);
 }
 .headerContent {
   display: flex;
