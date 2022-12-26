@@ -35,7 +35,6 @@
 .tag:hover {
   color: var(--color-border);
   border-bottom: 2px solid #717171;
-  background-color: var(--color-border-bg-light);
   cursor: pointer;
 }
 .tagIcon {
