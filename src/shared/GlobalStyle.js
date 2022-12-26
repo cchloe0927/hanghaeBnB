@@ -9,7 +9,8 @@ const GlovalStyle = createGlobalStyle`
   --color-border: #222222;
   --color-border-bg-dark: lightgray;
   --color-border-bg-light: #f7f7f7;
-  --color-etc: #888
+  --color-etc: #888;
+  --font-size-content: 16px;
 }
 
 @font-face {
