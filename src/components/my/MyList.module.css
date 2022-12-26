@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+  min-width: 870px;
+  padding: 20px 20px;
+  margin: 0 auto 50px auto;
+  font-size: var(--font-size-content);
+}
+.titleDiv {
+  margin: 35px 0;
+}
+.contentsDiv {
+  border: 1px solid gray;
+  width: 45%;
+  height: 220px;
+  padding: 10px;
+  border-radius: 15px;
+}
+.roomList {
+  display: flex;
+}
+.roomImageDiv {
+  width: 40%;
+  height: 160px;
+}
+
+.cancleButton {
+  width: 25%;
+  max-width: 100px;
+  padding: 8px;
+}
