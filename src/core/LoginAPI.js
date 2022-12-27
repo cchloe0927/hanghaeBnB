@@ -25,7 +25,10 @@ export const sign_up = async (post) => {
 //singin : 로그인
 export const sign_in = async (post) => {
   try {
-    const data = await instance.post(`users/login`, post);
+    const data = await instance.post(
+      `http://3.39.141.216:8080/api/users/login`,
+      post
+    );
     console.log("로그인 data :", data);
     return data;
   } catch (error) {
