@@ -3,19 +3,23 @@ import LocationSwiper from "./LocationSwiper";
 import RoomsCard from "./RoomsCard";
 import classes from "./RoomsList.module.css";
 //redux
-import { useDispatch, useSelect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { __getRooms } from "../../redux/modules/roomsSlice";
-//dummy
-import dummy from "../../db.json";
 
 const RoomsList = () => {
   // console.log(dummy);
   const dispatch = useDispatch();
-  // const roomsList = useSelect((room) => room.rooms);
+  const roomsList = useSelector((room) => room.rooms.rooms);
 
   useEffect(() => {
-    dispatch(__getRooms);
+    dispatch(__getRooms());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (roomsList.length === 0 || roomsList === undefined) {
+      return;
+    }
+  }, []);
 
   return (
     <div>
@@ -23,14 +27,14 @@ const RoomsList = () => {
         <LocationSwiper />
       </header>
       <div className={classes.rooms_container}>
-        {dummy.data.map((card, index) => (
+        {roomsList.map((card, index) => (
           <RoomsCard
             key={index}
             roomId={card.roomId}
             title={card.title}
             location={card.location}
             price={card.price}
-            img={card.img}
+            imgs={card.imgs[0]}
             likeCount={card.likeCount}
           />
         ))}

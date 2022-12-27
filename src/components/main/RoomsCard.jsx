@@ -4,7 +4,7 @@ import { FaHeart } from "react-icons/fa";
 import Card from "../elements/Card";
 import { useNavigate } from "react-router-dom";
 
-const RoomsCard = ({ roomId, title, location, price, img, likeCount }) => {
+const RoomsCard = ({ roomId, title, location, price, imgs, likeCount }) => {
   const navigate = useNavigate();
 
   const onClickCardHandler = () => {
@@ -13,7 +13,7 @@ const RoomsCard = ({ roomId, title, location, price, img, likeCount }) => {
 
   return (
     <Card className={classes.room_card} onClick={onClickCardHandler}>
-      <img className={classes.room_img} src={img} />
+      <img className={classes.room_img} src={imgs} />
 
       <div className={classes.room_info}>
         <div className={classes.location_heart}>
