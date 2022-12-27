@@ -22,7 +22,7 @@ const Router = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/post" element={<PostRoomPage />} />
-          <Route path="/reservation/:id" element={<ReservationPage />} />
+          <Route path="/reservation/:paramsId" element={<ReservationPage />} />
           <Route path="/mypage" element={<MyPage />} />
         </Route>
       </Routes>

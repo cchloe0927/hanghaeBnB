@@ -5,13 +5,13 @@ import { BsDoorOpen } from "react-icons/bs";
 import { CiMedal } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 
-const RoomDescription = () => {
+const RoomDescription = ({ hostName, personMax }) => {
   return (
     <div>
       <div className={classes.titleDiv}>
-        <h2>현상 (Thomas) 님이 호스팅하는 레지던스 전체</h2>
+        <h2>{hostName} 님이 호스팅하는 레지던스 전체</h2>
         <div className={classes.titleRoomInfoDiv}>
-          <span>최대 인원 4명 .</span>
+          <span>최대 인원 {personMax}명 .</span>
           <span> 침실 1개 .</span>
           <span> 욕실 1개</span>
         </div>
@@ -35,7 +35,7 @@ const RoomDescription = () => {
           </div>
           <div className={classes.selfCheckInTextGroup}>
             <div className={classes.selfCheckInTitle}>
-              현상 (Thomas)님은 슈퍼호스트입니다
+              {hostName} 님은 슈퍼호스트입니다
             </div>
             <div className={classes.selfCheckInBody}>
               슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가 숙소에서

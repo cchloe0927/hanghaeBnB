@@ -5,17 +5,19 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 import classes from "./TitleDiv.module.css";
 
-const TitleDiv = () => {
+const TitleDiv = ({ roomId, roomTitle, roomLocation }) => {
   return (
     <div>
       <div className={classes.titleDiv}>
-        <h1>(13 Fl.) Fantastic Panoramic Ocean View</h1>
+        <h1>
+          ({roomId}) {roomTitle}
+        </h1>
         <div className={classes.summaryGroup}>
           <span>★ 4.87</span>
           <span>.</span>
           <span>호스트</span>
           <span>.</span>
-          <span>위치</span>
+          <span>{roomLocation}</span>
         </div>
         <div className={classes.buttonGroup}>
           <button className={classes.button}>
