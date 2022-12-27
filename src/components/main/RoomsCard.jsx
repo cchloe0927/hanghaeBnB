@@ -1,27 +1,31 @@
 import React from "react";
-import Card from "../elements/Card";
-import { FaHeart } from "react-icons/fa";
 import classes from "./RoomsCard.module.css";
+import { FaHeart } from "react-icons/fa";
+import Card from "../elements/Card";
+import { useNavigate } from "react-router-dom";
 
-const RoomsCard = () => {
+const RoomsCard = ({ roomId, title, location, price, img, likeCount }) => {
+  const navigate = useNavigate();
+
+  const onClickCardHandler = () => {
+    navigate(`/reservation/${roomId}`);
+  };
+
   return (
-    <Card className={classes.room_card}>
-      <img
-        className={classes.room_img}
-        src="https://ldb-phinf.pstatic.net/20220409_217/1649434445156V17S7_JPEG/KakaoTalk_20220406_175952648.jpg"
-      />
+    <Card className={classes.room_card} onClick={onClickCardHandler}>
+      <img className={classes.room_img} src={img} />
 
       <div className={classes.room_info}>
         <div className={classes.location_heart}>
-          <p className={classes.room_location}>제주</p>
+          <p className={classes.room_location}>{location}</p>
           <div className={classes.heart_counter}>
             <FaHeart />
-            <p>1004</p>
+            <p>{likeCount}</p>
           </div>
         </div>
-        <p className={classes.room_title}>물결그림</p>
+        <p className={classes.room_title}>{title}</p>
         <p>
-          <span className={classes.room_price}>₩495,000</span> /박
+          <span className={classes.room_price}>₩{price}</span> /박
         </p>
       </div>
     </Card>

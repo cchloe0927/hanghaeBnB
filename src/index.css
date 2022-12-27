@@ -16,3 +16,7 @@ code {
 .swiper-button-prev:after {
   color: #717171;
 }
+
+.swiper-slide:hover {
+  color: var(--color-main);
+}

@@ -3,31 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react"; //basic
 import SwiperCore, { Navigation } from "swiper";
 import "swiper/css"; //basic
 import "swiper/css/navigation";
+import LocationCategory from "./LocationCategory";
 
 SwiperCore.use([Navigation]);
 
-const SwiperLodation = () => {
+const LocationSwiper = () => {
   //상수함수 -> 컴포넌트(컨트롤에 가까운)를 하나 생성해서 그 안에서 관리를 해주는 것이 좋다!
-  const locationName = [
-    "전체",
-    "서울",
-    "경기",
-    "인천",
-    "강원",
-    "충북",
-    "충남",
-    "세종",
-    "대전",
-    "전북",
-    "걍븍",
-    "대구",
-    "울산",
-    "경남",
-    "부산",
-    "광주",
-    "전남",
-    "제주",
-  ];
+  const category = LocationCategory();
 
   const onClickLocationNameHandler = (locaionItem, index) => {
     console.log(locaionItem);
@@ -46,7 +28,7 @@ const SwiperLodation = () => {
       }}
     >
       <div>
-        {locationName.map((itme, index) => (
+        {category.map((itme, index) => (
           <SwiperSlide
             key={index}
             onClick={() => onClickLocationNameHandler(itme, index)}
@@ -59,4 +41,4 @@ const SwiperLodation = () => {
   );
 };
 
-export default SwiperLodation;
+export default LocationSwiper;
