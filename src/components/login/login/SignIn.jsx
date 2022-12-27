@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { sign_in } from "../../../core/LoginAPI";
-import Card from "../../elements/Card";
-import Button from "../../elements/Button";
+import classes from "./SignIn.module.css";
+import { FaTimes } from "react-icons/fa";
 import kakao from "../../../img/icon_kakao.png";
 import google from "../../../img/icon_google.png";
-import { FaTimes } from "react-icons/fa";
-import classes from "./SignIn.module.css";
+import Card from "../../elements/Card";
+import Button from "../../elements/Button";
+import { Link, useNavigate } from "react-router-dom";
+import { sign_in } from "../../../core/LoginAPI";
 
 const AlertModal = () => {
   const navigate = useNavigate();
@@ -55,8 +55,8 @@ const AlertModal = () => {
       sign_in(newLoginValue).then((res) => {
         //console.log("res", res);
         alert(res.data.msg);
-        localStorage.setItem("id", res.headers.authorization);
-        //localStorage.setItem("nickname", res.data.data.nickname);
+        // localStorage.setItem("id", res.headers.authorization);
+        // localStorage.setItem("nickname", res.data.data.nickname);
         navigate("/");
       });
     }

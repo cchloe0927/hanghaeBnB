@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { instance, fileInstance } from "../../core/instance";
+import { instance } from "../../core/instance";
 
 //초기값
 const initialState = {
@@ -9,23 +9,6 @@ const initialState = {
 };
 
 //createAsyncThunk를 통해서 thunk함수 생성
-//__postRoom : 숙소 등록
-export const __postRoom = createAsyncThunk(
-  //첫번째 인자 : action value
-  "__postRoom",
-  //두번째 인자 : 콜백함수
-  async (payload, thunkAPI) => {
-    console.log("newPostData payload 확인 :", payload);
-    try {
-      const data = await fileInstance.post(`/room`, payload);
-      console.log("__postRoom", data);
-      return thunkAPI.fulfillWithValue(data.data); //fulfillWithValue : 네트워크 요청이 성공한 경우, dispatch함. 인자로 payload를 넘겨줄 수 있음
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error); //rejectWithValue : 네트워크 요청이 실패한 경우, dispatch함. 인자로 payload를 넘겨줄 수 있음
-    }
-  }
-);
-
 //__getRooms : 숙소 리스트
 export const __getRooms = createAsyncThunk(
   //첫번째 인자 : action value
