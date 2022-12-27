@@ -55,8 +55,9 @@ const AlertModal = () => {
       sign_in(newLoginValue).then((res) => {
         //console.log("res", res);
         alert(res.data.msg);
-        // localStorage.setItem("id", res.headers.authorization);
-        // localStorage.setItem("nickname", res.data.data.nickname);
+        localStorage.setItem("id", res.headers.authorization);
+        localStorage.setItem("email", res.data.data.email);
+        localStorage.setItem("nickname", res.data.data.nickname);
         navigate("/");
       });
     }

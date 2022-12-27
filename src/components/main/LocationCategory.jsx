@@ -1,6 +1,6 @@
-const LocationOption = () => {
-  let location = [
-    "",
+const LocationCategory = () => {
+  let category = [
+    "전체",
     "서울",
     "경기",
     "인천",
@@ -20,7 +20,7 @@ const LocationOption = () => {
     "제주",
   ];
 
-  return location;
+  return category;
 };
 
-export default LocationOption;
+export default LocationCategory;
