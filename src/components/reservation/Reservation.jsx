@@ -6,11 +6,12 @@ import Button from "../elements/Button";
 import ImgageDiv from "./ImgageDiv.jsx";
 import TitleDiv from "./TitleDiv";
 import CommentInput from "./CommentInput";
+import TagGroup from "./TagGroup";
+import RoomDescription from "./RoomDescription";
+import CommonDescrition from "./CommonDescrition";
+import RoomConvinence from "./RoomConvinence";
 
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { FaCity } from "react-icons/fa";
-import { GiParkBench } from "react-icons/gi";
-import { GiWaveSurfer } from "react-icons/gi";
 
 const Reservation = () => {
   const navigate = useNavigate();
@@ -27,38 +28,36 @@ const Reservation = () => {
       <ImgageDiv />
       <div className={`${classes.contentsDiv} ${classes.sticky}`}>
         <div className={classes.TextDiv}>
-          <div>title</div>
+          <RoomDescription />
+          <CommonDescrition />
+          <RoomConvinence />
           <hr />
-          <div>body</div>
-          <hr />
-          <div className={classes.tagGroup}>
-            <div className={classes.tag}>
-              <span className={classes.tagIcon}>
-                <GiParkBench />
-              </span>
-              <span className={classes.tagTitle}>공원</span>
-            </div>
-            <div className={classes.tag}>
-              <span className={classes.tagIcon}>
-                <GiWaveSurfer />
-              </span>
-              <span className={classes.tagTitle}>오션뷰</span>
-            </div>
-            <div className={classes.tag}>
-              <span className={classes.tagIcon}>
-                <FaCity />
-              </span>
-              <span className={classes.tagTitle}>시티뷰</span>
-            </div>
-          </div>
+          <TagGroup />
         </div>
         <div className={classes.reservationContent}>
-          <div>price</div>
+          <div className={classes.priceTitleDiv}>
+            <span className={classes.priceTitle}>₩70,000</span>
+            <span>/박</span>
+          </div>
+          <div className={classes.reservationTable}>
+            <div className={classes.reservationDate}>
+              <div>체크인</div>
+              <div>체크아웃</div>
+            </div>
+            <div className={classes.reservationPerson}>인원</div>
+          </div>
           <Button onClick={() => navigate("/mypage")}>예약하기</Button>
-          <div>DetailPrice</div>
+          <div className={classes.priceNotice}>
+            예약 확정 전에는 요금이 청구되지 않습니다.
+          </div>
+          <div className={classes.divLine}></div>
+          <div className={classes.totalPriceDiv}>
+            <div>총 합계</div>
+            <div>₩70,000</div>
+          </div>
         </div>
       </div>
-      <hr />
+
       <div className={classes.reviewDiv}>
         <div className={classes.reviewButtonGroup}>
           <button className={classes.button} onClick={commentHandler}>
