@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { instance } from "../../core/instance";
 import classes from "./MyList.module.css";
 
 import Button from "../elements/Button";
@@ -11,6 +12,12 @@ const MyList = () => {
   let num = 0;
   const navigate = useNavigate();
   const sampleDate = JSON.stringify(new Date()).split("T")[0].substr(1);
+
+  useEffect(() => {
+    instance.get(`http://3.39.141.216:8080/api/book`).then((response) => {
+      console.log(response);
+    });
+  }, []);
   const sampleList = [
     {
       roomId: 1,
