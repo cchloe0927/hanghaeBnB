@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { sign_up, duplicate_check } from "../../../core/LoginAPI";
+import classes from "./SignUp.module.css";
+import { FaTimes } from "react-icons/fa";
 import Button from "../../elements/Button";
 import Card from "../../elements/Card";
-import { FaTimes } from "react-icons/fa";
-import classes from "./SignUp.module.css";
+import { useNavigate } from "react-router-dom";
+import { sign_up, duplicate_check } from "../../../core/LoginAPI";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -14,7 +14,6 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [nickname, setNickname] = useState("");
-
   //유효성 검사
   const [duplicateCheck, setDuplicateCheck] = useState(false);
   const [isEmail, setIsEmail] = useState(true);
@@ -53,9 +52,9 @@ const SignUp = () => {
       duplicateCheck === true
     ) {
       sign_up(newLoginValue).then((res) => {
+        alert(res.data.msg);
         setDuplicateCheck(false);
-        // navigate("/login");
-        alert("회원가입 완료!");
+        navigate("/login");
       });
     }
   };

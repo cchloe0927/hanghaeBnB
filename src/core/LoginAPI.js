@@ -4,7 +4,7 @@ import { instance } from "./instance";
 export const duplicate_check = async (post) => {
   try {
     const data = await instance.post(`users/signup/email`, post);
-    //console.log("중복 체크 data :", data);
+    console.log("중복 체크 data :", data);
     return data;
   } catch (error) {
     //console.log("중복체크 error :", error.response.data.msg);
@@ -15,7 +15,7 @@ export const duplicate_check = async (post) => {
 export const sign_up = async (post) => {
   try {
     const data = await instance.post(`users/signup`, post);
-    console.log("data :", data.data);
+    console.log("회원 가입 data :", data);
     return data;
   } catch (error) {
     alert(error.response.data.msg);
@@ -26,6 +26,7 @@ export const sign_up = async (post) => {
 export const sign_in = async (post) => {
   try {
     const data = await instance.post(`users/login`, post);
+    console.log("로그인 data :", data);
     return data;
   } catch (error) {
     alert(error.response.data.msg);

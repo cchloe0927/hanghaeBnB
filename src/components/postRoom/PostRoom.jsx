@@ -1,39 +1,19 @@
 import React, { useState, useRef } from "react";
+import classes from "./PostRoom.module.css";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
-import classes from "./PostRoom.module.css";
-//redux
-import { useDispatch } from "react-redux";
-import { __postRoom } from "../../redux/modules/roomsSlice";
+import LocationOption from "./LocationOption";
 //axios
 import axios from "axios";
 export const BACK_API = process.env.REACT_APP_BACKAPI;
 
 const PostRoom = () => {
-  const dispatch = useDispatch();
   const fileInput = useRef();
-  let location = [
-    "",
-    "서울",
-    "경기",
-    "인천",
-    "강원",
-    "충북",
-    "충남",
-    "세종",
-    "대전",
-    "전북",
-    "경북",
-    "대구",
-    "울산",
-    "경남",
-    "부산",
-    "광주",
-    "전남",
-    "제주",
-  ];
+  const location = LocationOption();
 
   //상태값 관리
+  //업로드 했을 때 post가 아닌, 등록 버튼을 눌렀을 때 다른 데이터와 함꼐 post되는 방식
+  //따라서 업로드 시에 상태값을 따로 관리해서 변경 된 상태 값을 post 함
   const [imgFiles, setImgFiles] = useState([]);
   const [tagItem, setTagItem] = useState("");
   const [tagList, setTagList] = useState([]);
@@ -50,13 +30,14 @@ const PostRoom = () => {
   //함수 핸들러
   const onClickDataHandler = async () => {
     let formData = new FormData();
-    //console.log("imgFile 상태값:", imgFiles);
+    console.log("formData 초기 값", formData); //FormData {}
+    console.log("imgFile 상태 값:", imgFiles); //FileList에 객체 형식으로 들어감
 
-    //formData append
+    //파일 append
     for (const key in imgFiles) {
       formData.append("MultipartFile", imgFiles[key]);
     }
-
+    //데이터 append
     formData.append("location", roomsInfoData.location);
     formData.append("title", roomsInfoData.title);
     formData.append("contents", roomsInfoData.contents);
@@ -65,24 +46,6 @@ const PostRoom = () => {
     formData.append("price", roomsInfoData.price);
     formData.append("extraPrice", roomsInfoData.extraPrice);
     formData.append("tags", tagList);
-
-    // formData append
-    // formData.append("MultipartFile", imgFiles);
-    // const newPostData = {
-    //   location: roomsInfoData.location,
-    //   title: roomsInfoData.title,
-    //   contents: roomsInfoData.contents,
-    //   headDefault: parseInt(roomsInfoData.headDefault),
-    //   headMax: parseInt(roomsInfoData.headMax),
-    //   price: parseInt(roomsInfoData.price),
-    //   extraPrice: parseInt(roomsInfoData.extraPrice),
-    //   tags: tagList, //배열 형식
-    // };
-
-    // formData.append(
-    //   "room",
-    //   new Blob([JSON.stringify(newPostData)], { type: "application/json" })
-    // );
 
     await axios({
       url: `${BACK_API}/room`,
@@ -93,9 +56,6 @@ const PostRoom = () => {
       },
       data: formData,
     });
-
-    //리덕스 미들웨어 사용방법 TEST
-    //dispatch(__postRoom(formData));
 
     //빈값 처리
     setRoomsInfoData({
@@ -109,7 +69,10 @@ const PostRoom = () => {
     });
     setTagList([]);
     fileInput.current.value = "";
-    // console.log("newPostData 확인 :", newPostData);
+  };
+
+  const onChangeImgHandler = async (event) => {
+    setImgFiles(event.target.files);
   };
 
   const onChangeInputValueHandler = (event) => {
@@ -120,23 +83,18 @@ const PostRoom = () => {
     });
   };
 
-  const onKeyPress = (event) => {
+  const onKeyPressTag = (event) => {
     if (event.target.value.length !== 0 && event.key === "Enter") {
       event.preventDefault();
-      submitTagItem();
+      onSubmitTagItemHandler();
     }
   };
-  const submitTagItem = () => {
+  const onSubmitTagItemHandler = () => {
     let newTagList = [...tagList];
     newTagList.push(tagItem);
     setTagList(newTagList);
     setTagItem("");
   };
-
-  const onChangeImgHandler = async (event) => {
-    setImgFiles(event.target.files);
-  };
-  console.log(imgFiles);
 
   return (
     <div className={classes.wrap}>
@@ -243,7 +201,7 @@ const PostRoom = () => {
               tabIndex={2}
               onChange={(e) => setTagItem(e.target.value)}
               value={tagItem}
-              onKeyUp={onKeyPress}
+              onKeyUp={onKeyPressTag}
             />
           </div>
 

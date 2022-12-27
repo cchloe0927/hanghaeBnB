@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const BACK_API = process.env.REACT_APP_BACKAPI;
 
 //CROS 통신 -> headers에 origin을 보내줘야함
@@ -10,19 +9,20 @@ export const instance = axios.create({
   },
 });
 
-export const fileInstance = axios.create({
-  baseURL: BACK_API,
-  headers: {
-    "Content-Type": "multipart/form-data",
-  },
+//interceptors : axios에서 지원하는 기능. axios에서 요청을 보내는 것을 가로채서 추가하기
+instance.interceptors.request.use((config) => {
+  if (config.headers === undefined) return;
+  //localStorage.getItem("key") -> 키로 부터 데이터 읽기
+  const token = localStorage.getItem("id");
+  //console.log(config);
+  config.headers["Authorization"] = `${token}`;
+  return config;
 });
 
-//interceptors : axios에서 지원하는 기능. axios에서 요청을 보내는 것을 가로채서 추가하기
-// instance.interceptors.request.use((config) => {
-//   if (config.headers === undefined) return;
-//   //localStorage.getItem("key") -> 키로 부터 데이터 읽기
-//   const token = localStorage.getItem("id");
-//   //console.log(config);
-//   config.headers["Authorization"] = `${token}`;
-//   return config;
+//파일 axios -> 안쓰고 있음
+// export const fileInstance = axios.create({
+//   baseURL: BACK_API,
+//   headers: {
+//     "Content-Type": "multipart/form-data",
+//   },
 // });
