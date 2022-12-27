@@ -2,14 +2,26 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../core/instance";
 
 const initialState = {
-  rooms: [],
+  roomDetail: [
+    {
+      title: "",
+      roomId: "",
+      hostName: "",
+      headDefault: "",
+      headMax: "",
+      location: "",
+      price: "",
+      extraPrice: "",
+      tags: "",
+    },
+  ],
   isLoading: false,
   error: null,
 };
 
 export const __getRoomInfo = createAsyncThunk(
   //첫번째 인자 : action value
-  "__getRooms",
+  "RoomInfo/get",
   //두번째 인자 : 콜백함수
   async (payload, thunkAPI) => {
     const roomId = Number(payload);
