@@ -3,11 +3,12 @@ import classes from "./PostRoom.module.css";
 import Card from "../elements/Card";
 import Button from "../elements/Button";
 import LocationOption from "./LocationOption";
+import { useNavigate } from "react-router-dom";
 //axios
-import axios from "axios";
-export const BACK_API = process.env.REACT_APP_BACKAPI;
+import { post_room } from "../../core/AxiosAPI";
 
 const PostRoom = () => {
+  const navigate = useNavigate();
   const fileInput = useRef();
   const location = LocationOption();
 
@@ -47,14 +48,10 @@ const PostRoom = () => {
     formData.append("extraPrice", roomsInfoData.extraPrice);
     formData.append("tags", tagList);
 
-    await axios({
-      url: `${BACK_API}/room`,
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      data: formData,
+    //form_data 통신
+    post_room(formData).then((res) => {
+      alert(res.data.msg);
+      navigate("/");
     });
 
     //빈값 처리
@@ -89,6 +86,7 @@ const PostRoom = () => {
       onSubmitTagItemHandler();
     }
   };
+
   const onSubmitTagItemHandler = () => {
     let newTagList = [...tagList];
     newTagList.push(tagItem);
