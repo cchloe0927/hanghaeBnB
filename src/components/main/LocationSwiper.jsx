@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import LocationCategory from "./LocationCategory";
 //redux
 import { useDispatch } from "react-redux";
-import { __getRooms } from "../../redux/modules/roomsSlice";
+import { __postRooms } from "../../redux/modules/roomsSlice";
 
 SwiperCore.use([Navigation]);
 
@@ -20,7 +20,7 @@ const LocationSwiper = () => {
     const newLocationCategoty = {
       category: locaionItem,
     };
-    dispatch(__getRooms(newLocationCategoty));
+    dispatch(__postRooms(newLocationCategoty));
   };
 
   return (

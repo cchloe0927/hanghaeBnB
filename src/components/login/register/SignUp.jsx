@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import Button from "../../elements/Button";
 import Card from "../../elements/Card";
 import { useNavigate } from "react-router-dom";
-import { sign_up, duplicate_check } from "../../../core/LoginAPI";
+import { sign_up, duplicate_check } from "../../../core/AxiosAPI";
 
 const SignUp = () => {
   const navigate = useNavigate();

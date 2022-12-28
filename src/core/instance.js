@@ -12,17 +12,10 @@ export const instance = axios.create({
 //interceptors : axios에서 지원하는 기능. axios에서 요청을 보내는 것을 가로채서 추가하기
 instance.interceptors.request.use((config) => {
   if (config.headers === undefined) return;
-  localStorage.getItem("key"); //-> 키로 부터 데이터 읽기
+  //ocalStorage.getItem("key"); //-> 키로 부터 데이터 읽기
   const token = localStorage.getItem("id");
-  //console.log(config);
+  //console.log(config)
+  //console.log(token);
   config.headers["Authorization"] = `${token}`;
   return config;
 });
-
-//파일 axios -> 안쓰고 있음
-// export const fileInstance = axios.create({
-//   baseURL: BACK_API,
-//   headers: {
-//     "Content-Type": "multipart/form-data",
-//   },
-// });

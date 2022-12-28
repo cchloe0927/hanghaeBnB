@@ -6,7 +6,7 @@ import google from "../../../img/icon_google.png";
 import Card from "../../elements/Card";
 import Button from "../../elements/Button";
 import { Link, useNavigate } from "react-router-dom";
-import { sign_in } from "../../../core/LoginAPI";
+import { sign_in } from "../../../core/AxiosAPI";
 
 const AlertModal = () => {
   const navigate = useNavigate();
@@ -19,9 +19,9 @@ const AlertModal = () => {
   });
 
   //카카오 인가 코드 요청
-  //   const onClickKakaoHandler = async (e) => {
-  //     window.location.href = KAKAO_AUTH_URL;
-  //   };
+  // const onClickKakaoHandler = async (e) => {
+  //   window.location.href = KAKAO_AUTH_URL;
+  // };
 
   const onClickCloseBtnHandler = () => {
     navigate("/");
@@ -53,7 +53,7 @@ const AlertModal = () => {
         password: loginValue.password,
       };
       sign_in(newLoginValue).then((res) => {
-        //console.log("res", res);
+        console.log("res", res);
         alert(res.data.msg);
         localStorage.setItem("id", res.headers.authorization);
         localStorage.setItem("email", res.data.data.email);
