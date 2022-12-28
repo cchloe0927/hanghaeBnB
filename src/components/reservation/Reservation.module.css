@@ -110,23 +110,48 @@
 .button:hover {
   background-color: var(--color-border-bg-light);
 }
+.validCheckText {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--color-main);
+}
 .reviewButtonGroup {
   margin: 10px 0;
 }
-.commentBG {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 150%;
-  background-color: rgba(0, 0, 0, 0.3);
-}
 .commentDiv {
   display: flex;
+  width: 100%;
+
   gap: 15px;
   margin-bottom: 38.5px;
 }
 .commentButton {
   width: 10%;
   padding: 5px;
+}
+.commentList {
+  width: 100%;
+}
+.commetCard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.commetTitle {
+  width: 89%;
+  height: 40px;
+  padding: 10px 8px;
+  border: 1px solid var(--color-border-bg-dark);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.buttonGroup {
+  display: flex;
+  width: 10%;
+  gap: 7px;
+}
+.commentEditButton {
+  padding: 5px;
+  width: 50%;
 }
