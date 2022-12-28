@@ -1,0 +1,76 @@
+.reservationContentDiv {
+  display: flex;
+  justify-content: center;
+  width: 45%;
+}
+.reservationContent {
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-width: 285px;
+  max-width: 370px;
+  width: 80%;
+  height: 400px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+  padding: 24px;
+  margin: 0 0 35px 35px;
+}
+.priceTitle {
+  font-size: 20px;
+  font-weight: 800;
+}
+.reservationTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border-bg-dark);
+  border-radius: 10px;
+  height: 110px;
+}
+.reservationDate {
+  display: flex;
+  justify-content: space-around;
+  height: 55px;
+  border-bottom: 1px solid var(--color-border-bg-dark);
+}
+.reservationPerson {
+  height: 55px;
+  text-align: center;
+}
+.priceNotice {
+  text-align: center;
+  font-size: 14px;
+  color: rgb(34, 34, 34);
+}
+.totalPriceDiv {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+.divLine {
+  height: 1px;
+  background-color: var(--color-border-bg-dark);
+}
+.button {
+  background-color: white;
+  font: inherit;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-border);
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: underline;
+}
+.button:hover {
+  background-color: var(--color-border-bg-light);
+}
+.validCheckText {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--color-main);
+}

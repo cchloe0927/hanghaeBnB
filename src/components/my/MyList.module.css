@@ -15,3 +15,26 @@
   display: flex;
   flex-wrap: wrap;
 }
+.cardDiv {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border-bg-light);
+  width: 100%;
+  max-width: 450px;
+
+  height: 245px;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 0 10px 20px 0;
+}
+.buttonDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+.cancleButton {
+  width: 25%;
+  max-width: 100px;
+  padding: 8px;
+}

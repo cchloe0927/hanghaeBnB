@@ -46,57 +46,12 @@
   margin-bottom: 7px;
 }
 
-.reservationContent {
-  position: sticky;
-  top: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 35%;
-  min-width: 285px;
-  height: 400px;
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
-  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-  padding: 24px;
-  margin: 0 0 35px 35px;
-}
-.priceTitle {
-  font-size: 20px;
-  font-weight: 800;
-}
-.reservationTable {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--color-border-bg-dark);
-  border-radius: 10px;
-  height: 110px;
-}
-.reservationDate {
-  display: flex;
-  justify-content: space-around;
-  height: 55px;
-  border-bottom: 1px solid var(--color-border-bg-dark);
-}
-.reservationPerson {
-  height: 55px;
-  text-align: center;
-}
-.priceNotice {
-  text-align: center;
-  font-size: 14px;
-  color: rgb(34, 34, 34);
-}
-.totalPriceDiv {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-}
-.divLine {
-  height: 1px;
-  background-color: var(--color-border-bg-dark);
+.reviewButtonGroup {
+  margin: 10px 0;
 }
 .button {
+  display: flex;
+  gap: 7px;
   background-color: white;
   font: inherit;
   border: none;
@@ -105,53 +60,7 @@
   padding: 0.25rem 1rem;
   cursor: pointer;
   padding: 8px;
-  text-decoration: underline;
 }
 .button:hover {
   background-color: var(--color-border-bg-light);
-}
-.validCheckText {
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--color-main);
-}
-.reviewButtonGroup {
-  margin: 10px 0;
-}
-.commentDiv {
-  display: flex;
-  width: 100%;
-
-  gap: 15px;
-  margin-bottom: 38.5px;
-}
-.commentButton {
-  width: 10%;
-  padding: 5px;
-}
-.commentList {
-  width: 100%;
-}
-.commetCard {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 20px;
-}
-.commetTitle {
-  width: 89%;
-  height: 40px;
-  padding: 10px 8px;
-  border: 1px solid var(--color-border-bg-dark);
-  border-radius: 8px;
-  font-size: 14px;
-}
-.buttonGroup {
-  display: flex;
-  width: 10%;
-  gap: 7px;
-}
-.commentEditButton {
-  padding: 5px;
-  width: 50%;
 }

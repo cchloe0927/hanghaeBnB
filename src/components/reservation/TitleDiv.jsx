@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { FiShare } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineDelete } from "react-icons/ai";
 
 import classes from "./TitleDiv.module.css";
 import { instance } from "../../core/instance";
 
-const TitleDiv = ({ roomId, roomTitle, roomLocation }) => {
+const TitleDiv = ({ roomId, roomTitle, roomLocation, roomLike }) => {
+  console.log(roomLike);
+  const [like, setLike] = useState(roomLike);
+
   const roomDeleteHandler = () => {
-    instance
-      .delete(`http://3.39.141.216:8080/api/room/${roomId}`)
-      .then((response) => console.log(response));
+    instance.delete(`room/${roomId}`).then((response) => console.log(response));
   };
   const roomLikeHandler = () => {
     instance
-      .post(`http://3.39.141.216:8080/api/room/${roomId}/like`)
-      .then((response) => console.log(response));
+      .post(`room/${roomId}/like`)
+      .then((response) => setLike(response.data.data.like));
   };
   return (
     <div>
@@ -35,7 +37,7 @@ const TitleDiv = ({ roomId, roomTitle, roomLocation }) => {
             <FiShare /> 공유하기
           </button>
           <button onClick={roomLikeHandler} className={classes.button}>
-            <AiOutlineHeart />
+            {like ? <AiFillHeart /> : <AiOutlineHeart />}
             좋아요
           </button>
           <button
