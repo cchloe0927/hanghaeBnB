@@ -47,7 +47,7 @@ export const sign_in = async (post) => {
 //kakao : 카카오 로그인
 export const kakao = async (post) => {
   try {
-    const data = await instance.port(`users/login/kakao`, post);
+    const data = await instance.port(`users/login/kakao?code=${post}`);
     return data;
   } catch (error) {
     alert(error.response.data.msg);
