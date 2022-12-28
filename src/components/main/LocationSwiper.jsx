@@ -31,7 +31,7 @@ const LocationSwiper = () => {
       scrollbar={{ draggable: true }}
       breakpoints={{
         768: {
-          slidesPerView: 7,
+          slidesPerView: 10,
         },
       }}
     >

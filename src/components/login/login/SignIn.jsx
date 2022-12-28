@@ -8,7 +8,12 @@ import Button from "../../elements/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { sign_in } from "../../../core/AxiosAPI";
 
-const AlertModal = () => {
+export const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+export const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}
+&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+const SignIn = () => {
   const navigate = useNavigate();
   const [loginValue, setLoginValue] = useState({
     email: "",
@@ -19,9 +24,9 @@ const AlertModal = () => {
   });
 
   //카카오 인가 코드 요청
-  // const onClickKakaoHandler = async (e) => {
-  //   window.location.href = KAKAO_AUTH_URL;
-  // };
+  const onClickKakaoHandler = async (e) => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
 
   const onClickCloseBtnHandler = () => {
     navigate("/");
@@ -120,7 +125,11 @@ const AlertModal = () => {
             <Button className={classes.login_btn}>로그인</Button>
             <div className={classes.or_txt}>또는</div>
             <div className={classes.simple_login_btn}>
-              <button type="button" className={classes.kakao_btn}>
+              <button
+                type="button"
+                className={classes.kakao_btn}
+                onClick={onClickKakaoHandler}
+              >
                 <img src={kakao} />
                 <p>카카오로 로그인하기</p>
               </button>
@@ -136,4 +145,4 @@ const AlertModal = () => {
   );
 };
 
-export default AlertModal;
+export default SignIn;
