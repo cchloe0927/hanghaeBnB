@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import classes from "./MyReavervationCard.module.css";
 import { instance } from "../../core/instance";
@@ -7,14 +8,30 @@ import { instance } from "../../core/instance";
 import Button from "../elements/Button";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-const Card = ({ title, checkIn, headCount, totalPrice, bookId }) => {
-  const navigate = useNavigate();
+const Card = ({
+  title,
+  checkIn,
+  headCount,
+  totalPrice,
+  bookId,
+  roomId,
+  reservationList,
+}) => {
+  const [state, setState] = useState(false);
 
-  const cancleButtonHandler = (bookId) => {
-    instance
-      .delete(`http://3.39.141.216:8080/api/book/${bookId}`)
-      .then((response) => console.log(response));
-  };
+  const [room, setRoom] = useState([]);
+  const navigate = useNavigate();
+  const roomsList = useSelector((room) => [
+    room.rooms.rooms.find((room) => room.roomId === roomId),
+  ]);
+
+  useEffect(() => {
+    setState(true);
+  }, []);
+
+  if (!state) {
+    return <h1></h1>;
+  }
   return (
     <div className={classes.container}>
       <div className={classes.contentsDiv}>
@@ -38,14 +55,6 @@ const Card = ({ title, checkIn, headCount, totalPrice, bookId }) => {
               <div>(기본 숙박료 + 추가 요금)</div>
             </div>
           </div>
-        </div>
-        <div className={classes.buttonDiv}>
-          <Button
-            className={classes.cancleButton}
-            onClick={() => cancleButtonHandler(bookId)}
-          >
-            예약 취소
-          </Button>
         </div>
       </div>
     </div>

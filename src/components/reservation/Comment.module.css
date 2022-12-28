@@ -1,0 +1,75 @@
+.button {
+  display: flex;
+  gap: 7px;
+  background-color: white;
+  font: inherit;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-border);
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.commentDiv {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  width: 100%;
+}
+.commenInput {
+  width: 89%;
+}
+.commentButtonDiv {
+  display: flex;
+  justify-content: flex-end;
+  width: 10%;
+}
+.commentButton {
+  width: 90%;
+  max-width: 97px;
+  min-width: 38px;
+  padding: 5px;
+}
+.editCommentDiv {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  width: 100%;
+}
+.commentEditInput {
+  width: 89%;
+}
+.commentEditButtonDiv {
+  display: flex;
+  justify-content: flex-end;
+  width: 10%;
+}
+.commentEditButton {
+  width: 90%;
+  max-width: 97px;
+  min-width: 38px;
+  padding: 5px;
+}
+.commentList {
+  width: 100%;
+}
+.commetCard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.commetTitle {
+  width: 89%;
+  height: 40px;
+  padding: 10px 8px;
+  border: 1px solid var(--color-border-bg-dark);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.buttonGroup {
+  display: flex;
+  width: 10%;
+  gap: 7px;
+}

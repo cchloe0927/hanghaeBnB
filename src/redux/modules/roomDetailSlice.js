@@ -27,9 +27,7 @@ export const __getRoomInfo = createAsyncThunk(
     const roomId = Number(payload);
 
     try {
-      const data = await instance.get(
-        `http://3.39.141.216:8080/api/room/${roomId}`
-      );
+      const data = await instance.get(`room/${roomId}`);
 
       return thunkAPI.fulfillWithValue(data.data);
       //fulfillWithValue : 네트워크 요청이 성공한 경우, dispatch함. 인자로 payload를 넘겨줄 수 있음
