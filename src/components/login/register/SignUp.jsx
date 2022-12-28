@@ -52,9 +52,11 @@ const SignUp = () => {
       duplicateCheck === true
     ) {
       sign_up(newLoginValue).then((res) => {
-        alert(res.data.msg);
         setDuplicateCheck(false);
-        navigate("/login");
+        alert(res.data.msg);
+        if (res.data.msg === "회원가입이 완료되었습니다.") {
+          navigate("/login");
+        }
       });
     }
   };
