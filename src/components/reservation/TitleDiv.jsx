@@ -4,8 +4,19 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineDelete } from "react-icons/ai";
 
 import classes from "./TitleDiv.module.css";
+import { instance } from "../../core/instance";
 
 const TitleDiv = ({ roomId, roomTitle, roomLocation }) => {
+  const roomDeleteHandler = () => {
+    instance
+      .delete(`http://3.39.141.216:8080/api/room/${roomId}`)
+      .then((response) => console.log(response));
+  };
+  const roomLikeHandler = () => {
+    instance
+      .post(`http://3.39.141.216:8080/api/room/${roomId}/like`)
+      .then((response) => console.log(response));
+  };
   return (
     <div>
       <div className={classes.titleDiv}>
@@ -23,11 +34,15 @@ const TitleDiv = ({ roomId, roomTitle, roomLocation }) => {
           <button className={classes.button}>
             <FiShare /> 공유하기
           </button>
-          <button className={classes.button}>
+          <button onClick={roomLikeHandler} className={classes.button}>
             <AiOutlineHeart />
             좋아요
           </button>
-          <button className={classes.button}>
+          <button
+            type="button"
+            onClick={roomDeleteHandler}
+            className={classes.button}
+          >
             <AiOutlineDelete />
             삭제
           </button>

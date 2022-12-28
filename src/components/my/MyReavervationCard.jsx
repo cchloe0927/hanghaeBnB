@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import classes from "./MyReavervationCard.module.css";
+import { instance } from "../../core/instance";
 
 import Button from "../elements/Button";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-const Card = ({ title, checkIn, headCount, totalPrice }) => {
+const Card = ({ title, checkIn, headCount, totalPrice, bookId }) => {
   const navigate = useNavigate();
 
-  const cancleButtonHandler = () => {
-    navigate("/");
+  const cancleButtonHandler = (bookId) => {
+    instance
+      .delete(`http://3.39.141.216:8080/api/book/${bookId}`)
+      .then((response) => console.log(response));
   };
   return (
     <div className={classes.container}>
@@ -39,7 +42,7 @@ const Card = ({ title, checkIn, headCount, totalPrice }) => {
         <div className={classes.buttonDiv}>
           <Button
             className={classes.cancleButton}
-            onClick={cancleButtonHandler}
+            onClick={() => cancleButtonHandler(bookId)}
           >
             예약 취소
           </Button>

@@ -32,16 +32,12 @@ const Reservation = () => {
   //! <=== 오늘, 내일 날짜 (yyyy-mm-dd)
 
   //! 방 상세 정보 상태 값
-  const [roomData, setRoomDate] = useState({});
+  const [roomData, setRoomData] = useState({
+    comments: [{ contents: "테스트 초기값" }],
+  });
 
   //! 코멘트 입력창 열기
   const [commentAddInput, setCommentAddInput] = useState(false);
-  //! 코멘트 추가 상태 입력
-  const [addCommentValue, setAddCommentValue] = useState({
-    checkIn: today,
-    checkOut: tomorrow,
-    headCount: 2,
-  });
 
   /* dispatch 구현 부분
   const dispatch = useDispatch();
@@ -57,25 +53,22 @@ const Reservation = () => {
     instance
       .get(`http://3.39.141.216:8080/api/room/${numParamsId}`)
       .then((response) => {
-        setRoomDate(response.data.data);
+        setRoomData(response.data.data);
+        console.log(response.data.data);
       });
   }, []);
-
-  // const roomTitle = roomData.title;
-  // const roomId = roomData.roomId;
-  // const hostName = roomData.hostName;
-  // const personDefault = roomData.headDefault;
-  // const personMax = roomData.headMax;
-  // const roomLocation = roomData.location;
-  // const price = roomData.price;
-  // const extraPrice = roomData.extraPrice;
-  // const roomTags = roomData.tags;
 
   const commentHandler = () => {
     setCommentAddInput(!commentAddInput);
   };
 
   //! ===> 예약관련 로직 (체크인, 체크아웃, 최대인원) 설정하기
+  const [addCommentValue, setAddCommentValue] = useState({
+    checkIn: "",
+    checkOut: "",
+    headCount: 0,
+  });
+  const [totalPrice, setTotalPrice] = useState(0);
   const checkInOutDateHandler = (e) => {
     console.log(e.target);
     const dateId = e.target.id;
@@ -94,24 +87,116 @@ const Reservation = () => {
     }
     return arr;
   };
-  const personChangeHandler = (e) => {
-    const pesrson = Number(e.target.value);
-    setAddCommentValue({ ...addCommentValue, headCount: pesrson });
-  };
-  //! <=== 예약관련 로직 (체크인, 체크아웃, 최대인원) 설정하기
-  const reservationSubmitHandler = () => {
-    instance.post(
-      `http://3.39.141.216:8080/api/book/${numParamsId}`,
-      addCommentValue
+  const totoalPriceHandler = () => {
+    console.log(roomData);
+
+    console.log(addCommentValue.checkOut);
+    console.log(addCommentValue.checkIn);
+
+    return (
+      ((new Date(addCommentValue.checkOut).getTime() -
+        new Date(addCommentValue.checkIn).getTime()) /
+        (60 * 60 * 24 * 1000)) *
+      (roomData.price +
+        roomData.extraPrice *
+          (addCommentValue.headCount - roomData.headDefault))
     );
   };
+  const personChangeHandler = (e) => {
+    const pesrson = Number(e.target.value);
+    setAddCommentValue({
+      ...addCommentValue,
+      headCount: pesrson,
+    });
+  };
+  //! totalPrice 스테이트 추가 로직
+  useEffect(() => {
+    const totalPrice =
+      ((new Date(addCommentValue.checkOut).getTime() -
+        new Date(addCommentValue.checkIn).getTime()) /
+        (60 * 60 * 24 * 1000)) *
+      (roomData.price +
+        roomData.extraPrice *
+          (addCommentValue.headCount - roomData.headDefault));
+    setTotalPrice({
+      totalPrice,
+    });
+  }, [addCommentValue]);
+  console.log(totalPrice);
+  //! <=== 예약관련 로직 (체크인, 체크아웃, 최대인원) 설정하기
+  const reservationSubmitHandler = () => {
+    console.log({ ...addCommentValue, ...totalPrice });
+    if (totalPrice.totalPrice >= roomData.price) {
+      instance.post(`http://3.39.141.216:8080/api/room/${numParamsId}/book`, {
+        ...addCommentValue,
+        ...totalPrice,
+      });
+    } else {
+      console.log("유효하지않은값", totalPrice.totalPrice);
+    }
+  };
   //! <=== 예약 등록하기
+
+  //! <=== 코멘트 삭제
+  const commentDeleteHandler = (e) => {
+    const commetsList = roomData.comments;
+    const deleteCommentId = e;
+
+    // const newArr = commetsList.filter((comment) => {
+    //   return comment.commentId !== deleteCommentId;
+    // });
+    // console.log(newArr);
+    instance
+      .delete(`http://3.39.141.216:8080/api/room/comment/${deleteCommentId}`)
+      .then((response) => console.log(response));
+  };
+  //! ===> 코멘트 삭제
+
+  //! <=== 코멘트 수정
+  //! 코멘트 수정 인풋창 스테이트
+  const [commentEditInput, setCommentEditInput] = useState({
+    commentId: "",
+    commentEdit: false,
+    editComment: "",
+  });
+  //! 수정 인풋창 생성
+  const commentUpdateHandler = (e) => {
+    setCommentEditInput({
+      ...commentEditInput,
+      commentId: e,
+      commentEdit: true,
+    });
+  };
+  //! 코멘트 수정값 스테이트 저장
+  const editCommentInput = (e) => {
+    const editCommentId = commentEditInput.commentId;
+    const editContent = e.target.value;
+    setCommentEditInput({
+      ...commentEditInput,
+      commentId: editCommentId,
+      editComment: editContent,
+    });
+    console.log(commentEditInput);
+  };
+  //! 코멘트 업데이트 통신
+  const commentEditHandler = () => {
+    instance
+      .post(
+        `http://3.39.141.216:8080/api/room/comment/${commentEditInput.commentId}`,
+        { contents: commentEditInput.editComment }
+      )
+      .then((response) => console.log(response));
+    console.log(commentEditInput);
+  };
+
+  //! ===> 코멘트 수정
   //   if (isLoading) {
   //     return <div>로딩 중....</div>;
   //   }
   //   if (error) {
   //     return <div>{error.message}</div>;
   //   }
+
   return (
     <div className={classes.container}>
       <TitleDiv
@@ -124,7 +209,7 @@ const Reservation = () => {
         <div className={classes.TextDiv}>
           <RoomDescription
             hostName={roomData.hostName}
-            personMax={roomData.personMax}
+            personMax={roomData.headMax}
           />
           <CommonDescrition />
           <RoomConvinence />
@@ -165,13 +250,16 @@ const Reservation = () => {
             <div>
               <span>
                 기본인원:
-                {roomData.personDefault}
+                {roomData.headDefault}
               </span>
               <span>
                 최대인원:
-                {roomData.personMax}
+                {roomData.headMax}
               </span>
-              <select onChange={personChangeHandler}>{maxPerson()}</select>
+              <select onChange={personChangeHandler}>
+                <option>인원 선택</option>
+                {maxPerson()}
+              </select>
             </div>
           </div>
           <Button type="button" onClick={reservationSubmitHandler}>
@@ -188,14 +276,31 @@ const Reservation = () => {
           <div className={classes.totalPriceDiv}>
             <div>총 합계</div>
             <div>
-              {console.log()}
-
+              {/* totalPrice 계산 부분 */}
               {((new Date(addCommentValue.checkOut).getTime() -
                 new Date(addCommentValue.checkIn).getTime()) /
                 (60 * 60 * 24 * 1000)) *
                 (roomData.price +
                   roomData.extraPrice *
-                    (addCommentValue.headCount - roomData.headDefault))}
+                    (addCommentValue.headCount - roomData.headDefault)) &&
+              ((new Date(addCommentValue.checkOut).getTime() -
+                new Date(addCommentValue.checkIn).getTime()) /
+                (60 * 60 * 24 * 1000)) *
+                (roomData.price +
+                  roomData.extraPrice *
+                    (addCommentValue.headCount - roomData.headDefault)) >=
+                roomData.price ? (
+                ((new Date(addCommentValue.checkOut).getTime() -
+                  new Date(addCommentValue.checkIn).getTime()) /
+                  (60 * 60 * 24 * 1000)) *
+                (roomData.price +
+                  roomData.extraPrice *
+                    (addCommentValue.headCount - roomData.headDefault))
+              ) : (
+                <span className={classes.validCheckText}>
+                  필수항목을 입력해주세요
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -209,7 +314,47 @@ const Reservation = () => {
           </button>
         </div>
         {commentAddInput ? <CommentInput /> : null}
-        <div className={classes.commentList}></div>
+
+        {/* 코멘트 수정 인풋 부분 */}
+        <div className={classes.commentList}>
+          {commentEditInput.commentEdit ? (
+            <div>
+              <input onChange={editCommentInput} />
+              <Button
+                type="button"
+                onClick={commentEditHandler}
+                className={classes.commentEditButton}
+              >
+                수정
+              </Button>
+            </div>
+          ) : null}
+          {/* 코멘트 수정 인풋 부분 */}
+
+          {roomData.comments.map((item) => {
+            return (
+              <form key={item.createdAt} className={classes.commetCard}>
+                <input className={classes.commetTitle} value={item.contents} />
+                <div className={classes.buttonGroup}>
+                  <Button
+                    type="button"
+                    onClick={() => commentUpdateHandler(item.commentId)}
+                    className={classes.commentEditButton}
+                  >
+                    수정
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() => commentDeleteHandler(item.commentId)}
+                    className={classes.commentEditButton}
+                  >
+                    삭제
+                  </Button>
+                </div>
+              </form>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
