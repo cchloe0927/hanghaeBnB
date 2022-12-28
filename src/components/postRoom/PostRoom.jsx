@@ -142,6 +142,7 @@ const PostRoom = () => {
             <input
               name="headDefault"
               type="number"
+              min="1"
               className={classes.head}
               value={roomsInfoData.headDefault}
               onChange={onChangeInputValueHandler}
@@ -150,6 +151,7 @@ const PostRoom = () => {
             <input
               name="headMax"
               type="number"
+              min="1"
               className={classes.head}
               value={roomsInfoData.headMax}
               onChange={onChangeInputValueHandler}
@@ -158,6 +160,7 @@ const PostRoom = () => {
             <input
               name="price"
               type="number"
+              min="1"
               className={classes.price}
               value={roomsInfoData.price}
               onChange={onChangeInputValueHandler}
@@ -166,6 +169,7 @@ const PostRoom = () => {
             <input
               name="extraPrice"
               type="number"
+              min="1"
               className={classes.price}
               value={roomsInfoData.extraPrice}
               onChange={onChangeInputValueHandler}
