@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./RoomReservation.module.css";
 import { instance } from "../../core/instance";
 import Button from "../elements/Button";
 
 const RoomReservation = ({ roomData, numParamsId }) => {
+  const navigate = useNavigate();
   //! ===> 오늘, 내일 날짜 (yyyy-mm-dd)
   const today = `${new Date().getFullYear()}-${
     new Date().getMonth() + 1
@@ -68,6 +70,7 @@ const RoomReservation = ({ roomData, numParamsId }) => {
           },
         }
       );
+      navigate("/mypage");
     } else {
       console.log("유효하지않은값", totalPrice.totalPrice);
     }

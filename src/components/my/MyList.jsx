@@ -23,7 +23,7 @@ const MyList = () => {
       setReservationList(response.data.data.responseBookList);
       setState(true);
     });
-  }, []);
+  }, [state]);
   const cancleButtonHandler = (bookId) => {
     setReservationList(
       reservationList.filter((room) => room.bookId !== bookId)
