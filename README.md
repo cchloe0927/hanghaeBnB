@@ -2,7 +2,7 @@
 # 🚢 항해99 클론 프로젝트 - 항해BnB
 
 + 에어비앤비 클론 코딩 : https://www.airbnb.co.kr/
-+ 항해BnB 사이트 : 
++ 항해BnB 사이트 : http://hanghaebnb.s3-website.ap-northeast-2.amazonaws.com/ 
 + 프로젝트 기간 2022.12.23 ~ 2022.12.29
 
 <br />
