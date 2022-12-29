@@ -4,24 +4,22 @@ import { kakao } from "../../../../core/AxiosAPI";
 const Oauth2RedirectHandler = () => {
   const navigate = useNavigate();
   let code = new URL(window.location.href).searchParams.get("code"); //searchParams 파라미터 값 확인
-  console.log("인가 코드 :", code);
+  //console.log("인가 코드 :", code);
 
   kakao(code).then((res) => {
-    console.log("res :", res);
-    console.log("authorization", res.headers.authorization);
+    //console.log("authorization", res.headers.authorization);
     localStorage.setItem("id", res.headers.authorization);
     localStorage.setItem("email", res.data.data.email);
     localStorage.setItem("nickname", res.data.data.nickname);
+    localStorage.setItem("role", res.data.data.role);
     navigate("/");
   });
 
   //   const kakao = async () => {
   //     await instance
-  //       .post(`users/login/kakao?code=${code}`) //쿼리파라미터로 헤더에 데이터 넣어서 보냄!
+  //       .post(`users/login/kakao?code=${code}`)
   //       .then((res) => {
   //         localStorage.setItem("id", res.headers.authorization);
-  //         localStorage.setItem("email", res.data.data.email);
-  //         localStorage.setItem("nickname", res.data.data.nickname);
   //         navigate("/");
   //       })
   //       .catch((error) => {
