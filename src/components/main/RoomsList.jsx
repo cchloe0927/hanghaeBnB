@@ -10,7 +10,7 @@ import { __postRooms } from "../../redux/modules/roomsSlice";
 const RoomsList = () => {
   const dispatch = useDispatch();
   const roomsList = useSelector((room) => room.rooms.rooms);
-  // const [list, setList] = useState(roomsList);
+  const [list, setList] = useState(roomsList);
 
   useEffect(() => {
     dispatch(__postRooms());
@@ -20,7 +20,7 @@ const RoomsList = () => {
     if (roomsList.length === 0 || roomsList === undefined) {
       return;
     }
-    // setList(roomsList);
+    setList(roomsList);
   }, []);
 
   return (

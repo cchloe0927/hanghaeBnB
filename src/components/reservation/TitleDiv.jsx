@@ -3,16 +3,17 @@ import { FiShare } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./TitleDiv.module.css";
 import { instance } from "../../core/instance";
 
 const TitleDiv = ({ roomId, roomTitle, roomLocation, roomLike }) => {
-  console.log(roomLike);
+  const navigate = useNavigate();
   const [like, setLike] = useState(roomLike);
 
   const roomDeleteHandler = () => {
-    instance.delete(`room/${roomId}`).then((response) => console.log(response));
+    instance.delete(`room/${roomId}`).then((response) => navigate("/"));
   };
   const roomLikeHandler = () => {
     instance
@@ -22,9 +23,7 @@ const TitleDiv = ({ roomId, roomTitle, roomLocation, roomLike }) => {
   return (
     <div>
       <div className={classes.titleDiv}>
-        <h1>
-          ({roomId}) {roomTitle}
-        </h1>
+        <h1>{roomTitle}</h1>
         <div className={classes.summaryGroup}>
           <span>★ 4.87</span>
           <span>.</span>
