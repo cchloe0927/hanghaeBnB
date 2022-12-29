@@ -24,7 +24,7 @@ const RoomReservation = ({ roomData, numParamsId }) => {
   });
   const [totalPrice, setTotalPrice] = useState(0);
   const checkInOutDateHandler = (e) => {
-    console.log(e.target);
+    //console.log(e.target);
     const dateId = e.target.id;
     const dateValue = e.target.value;
     setReservatioState({ ...reservationState, [dateId]: dateValue });
@@ -72,7 +72,7 @@ const RoomReservation = ({ roomData, numParamsId }) => {
       );
       navigate("/mypage");
     } else {
-      console.log("유효하지않은값", totalPrice.totalPrice);
+      //console.log("유효하지않은값", totalPrice.totalPrice);
     }
   };
 

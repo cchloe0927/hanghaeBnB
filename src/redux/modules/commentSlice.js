@@ -12,14 +12,13 @@ export const __postComment = createAsyncThunk(
   "comment/post",
   //두번째 인자 : 콜백함수
   async (payload, thunkAPI) => {
-    console.log(payload);
+    //console.log(payload);
     // const roomId = payload.paramsId;
     // try {
     //   const data = await instance.post(
     //     `http://3.39.141.216:8080/api/room/2/comment`,
     //     payload
     //   );
-
     //   return thunkAPI.fulfillWithValue(data.data);
     //   //fulfillWithValue : 네트워크 요청이 성공한 경우, dispatch함. 인자로 payload를 넘겨줄 수 있음
     // } catch (error) {

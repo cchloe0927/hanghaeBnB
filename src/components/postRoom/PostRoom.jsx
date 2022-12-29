@@ -31,8 +31,8 @@ const PostRoom = () => {
   //함수 핸들러
   const onClickDataHandler = async () => {
     let formData = new FormData();
-    console.log("formData 초기 값", formData); //FormData {}
-    console.log("imgFile 상태 값:", imgFiles); //FileList에 객체 형식으로 들어감
+    //console.log("formData 초기 값", formData); //FormData {}
+    //console.log("imgFile 상태 값:", imgFiles); //FileList에 객체 형식으로 들어감
 
     //파일 append
     for (const key in imgFiles) {

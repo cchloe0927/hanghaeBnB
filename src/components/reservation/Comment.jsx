@@ -17,7 +17,7 @@ const Comment = ({ roomData }) => {
   //     setState(true);
   //   }, []);
   const [commentList, setCommentList] = useState(roomData.comments);
-  console.log(commentList);
+  //console.log(commentList);
   //! 코멘트 입력창 열기
   const [commentAddInput, setCommentAddInput] = useState(false);
   const commentHandler = () => {

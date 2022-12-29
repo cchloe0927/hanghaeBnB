@@ -16,7 +16,7 @@ const LocationSwiper = () => {
   const dispatch = useDispatch();
 
   const onClickLocationNameHandler = (locaionItem) => {
-    console.log("locaionItem 클릭 확인", locaionItem);
+    //console.log("locaionItem 클릭 확인", locaionItem);
     const newLocationCategoty = {
       category: locaionItem,
     };

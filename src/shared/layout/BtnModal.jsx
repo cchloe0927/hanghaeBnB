@@ -5,7 +5,6 @@ import classes from "./BtnModal.module.css";
 const BtnModal = ({ onCloseBtnHandler }) => {
   const [token, setToken] = useState(localStorage.getItem("id"));
   const [userRole, setUserRole] = useState(localStorage.getItem("role"));
-  console.log(userRole);
 
   const onClickLogoutButtonHandler = () => {
     setToken(localStorage.removeItem("id"));
