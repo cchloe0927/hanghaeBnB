@@ -30,9 +30,13 @@ const BtnModal = ({ onCloseBtnHandler }) => {
             로그인
           </Link>
         )}
-        <Link className={classes.sing_out} to={"/register"}>
-          회원가입
-        </Link>
+
+        {token ? null : (
+          <Link className={classes.sing_out} to={"/register"}>
+            회원가입
+          </Link>
+        )}
+
         {userRole === "HOST" ? (
           <Link className={classes.sing_out} to={"/post"}>
             숙소등록
