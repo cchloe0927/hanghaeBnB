@@ -40,7 +40,15 @@ const MyList = () => {
       </div>
       <div className={classes.cardListDiv}>
         {reservationList.map(
-          ({ title, checkIn, headCount, totalPrice, bookId, roomId }) => (
+          ({
+            title,
+            checkIn,
+            headCount,
+            totalPrice,
+            bookId,
+            roomId,
+            photos,
+          }) => (
             <div className={classes.cardDiv}>
               <MyReavervationCard
                 key={roomId}
@@ -51,6 +59,7 @@ const MyList = () => {
                 bookId={bookId}
                 roomId={roomId}
                 reservationList={reservationList}
+                photos={photos[0]}
               />
               <div className={classes.buttonDiv}>
                 <Button

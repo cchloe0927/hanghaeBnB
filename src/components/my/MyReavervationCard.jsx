@@ -16,6 +16,7 @@ const Card = ({
   bookId,
   roomId,
   reservationList,
+  photos,
 }) => {
   const [state, setState] = useState(false);
 
@@ -37,7 +38,7 @@ const Card = ({
       <div className={classes.contentsDiv}>
         <div className={classes.roomList}>
           <div className={classes.roomImageDiv}>
-            <div className={classes.roomImage}></div>
+            <img className={classes.roomImage} src={photos}></img>
           </div>
           <div className={classes.roomContents}>
             <div className={classes.roomTitle}>{title}</div>
