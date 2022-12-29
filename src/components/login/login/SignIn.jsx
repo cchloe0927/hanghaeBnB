@@ -63,6 +63,7 @@ const SignIn = () => {
         localStorage.setItem("id", res.headers.authorization);
         localStorage.setItem("email", res.data.data.email);
         localStorage.setItem("nickname", res.data.data.nickname);
+        localStorage.setItem("role", res.data.data.role);
         navigate("/");
       });
     }
@@ -133,10 +134,10 @@ const SignIn = () => {
                 <img src={kakao} />
                 <p>카카오로 로그인하기</p>
               </button>
-              <button type="button" className={classes.google_btn}>
+              {/* <button type="button" className={classes.google_btn}>
                 <img src={google} />
                 <p>구글로 로그인하기</p>
-              </button>
+              </button> */}
             </div>
           </form>
         </section>

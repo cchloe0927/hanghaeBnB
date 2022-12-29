@@ -47,7 +47,7 @@ export const sign_in = async (post) => {
 //kakao : 카카오 로그인
 export const kakao = async (post) => {
   try {
-    const data = await instance.post(`users/login/kakao?code=${post}`);
+    const data = await instance.post(`users/login/kakao?code=${post}`); //쿼리파라미터로 헤더에 데이터 넣어서 보냄!
     return data;
   } catch (error) {
     alert(error.response.data.msg);
